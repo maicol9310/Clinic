@@ -6,7 +6,6 @@ namespace Clinic.Application.Models
 {
     public class PeopleDTO : IMapFrom<Personas>
     {
-        [Key]
         public int nmid { get; set; }
         public string cddocumento { get; set; }
         public string dsnombres { get; set; }
