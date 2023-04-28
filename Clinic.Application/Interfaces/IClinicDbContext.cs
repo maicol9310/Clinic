@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Clinic.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Clinic.Application.Interfaces
 {
     public interface IClinicDbContext
     {
+        DatabaseFacade Database { get; }
+        DbSet<Personas> Peoples { get; set; }
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+        Task CommitTransactionAsync();
+        void RollbackTransaction();
     }
 }
