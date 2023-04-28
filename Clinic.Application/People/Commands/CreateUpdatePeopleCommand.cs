@@ -5,13 +5,13 @@ using MediatR;
 
 namespace Clinic.Application.People.Commands
 {
-    public class CreateUpdatePeopleCommand : IRequest
+    public class CreateUpdatePeopleCommand : IRequest<bool>
     {
         public int NMid { get; set; }
         public string CDdocumento { get; set; }
         public string DSnombres { get; set; }
         public string DSapellidos { get; set; }
-        public DateOnly FEnacimiento { get; set; }
+        public DateTime FEnacimiento { get; set; }
         public string CDtipo { get; set; }
         public string CDgenero { get; set; }
         public DateTime FEregistro { get; set; }
@@ -24,23 +24,18 @@ namespace Clinic.Application.People.Commands
         public string DSemail { get; set; }
     }
 
-    public class CreateUpdatePeopleCommandHandler : IRequestHandler<CreateUpdatePeopleCommand>
+    public class CreateUpdatePeopleCommandHandler : IRequestHandler<CreateUpdatePeopleCommand, bool>
     {
         private readonly IClinicDbContext _context;
-        private readonly IMapper _mapper;
-        private readonly IDateTime _dateTime;
 
         public CreateUpdatePeopleCommandHandler(
             IClinicDbContext context,
-            IMapper mapper,
-            IDateTime dateTime)
+            IMapper mapper)
         {
             _context = context;
-            _mapper = mapper;
-            _dateTime = dateTime;
         }
 
-        public async Task<Unit> Handle(CreateUpdatePeopleCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(CreateUpdatePeopleCommand request, CancellationToken cancellationToken)
         {
             //var People = await _context.Peoples
             //    .FirstOrDefaultAsync(x => x.nmid == request.NMid, cancellationToken);
@@ -68,7 +63,7 @@ namespace Clinic.Application.People.Commands
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            return Unit.Value;
+            return true;
         }
     }
 }

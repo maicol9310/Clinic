@@ -9,7 +9,7 @@ namespace Clinic.Domain.Entities
         public string cddocumento { get; set; }
         public string dsnombres { get; set; }
         public string dsapellidos { get; set; }
-        public DateOnly fenacimiento { get; set; }
+        public DateTime fenacimiento { get; set; }
         public string cdtipo { get; set; }
         public string cdgenero { get; set; }
         public DateTime feregistro { get; set; }
