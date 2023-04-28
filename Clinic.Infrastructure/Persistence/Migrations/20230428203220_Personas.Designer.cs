@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Clinic.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ClinicDbContext))]
-    [Migration("20230428165303_Personas")]
+    [Migration("20230428203220_Personas")]
     partial class Personas
     {
         /// <inheritdoc />
@@ -28,10 +28,7 @@ namespace Clinic.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("Clinic.Domain.Entities.Personas", b =>
                 {
                     b.Property<int>("nmid")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("nmid"));
 
                     b.Property<string>("cddocumento")
                         .IsRequired()

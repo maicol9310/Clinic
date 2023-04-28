@@ -8,6 +8,7 @@ namespace Clinic.Application.Interfaces
     {
         DatabaseFacade Database { get; }
         DbSet<Personas> Peoples { get; set; }
+        DbSet<Pacientes> Patients { get; set; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
         Task CommitTransactionAsync();
         void RollbackTransaction();

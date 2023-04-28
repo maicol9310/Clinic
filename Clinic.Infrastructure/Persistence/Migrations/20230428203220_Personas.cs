@@ -15,8 +15,7 @@ namespace Clinic.Infrastructure.Persistence.Migrations
                 name: "Peoples",
                 columns: table => new
                 {
-                    nmid = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    nmid = table.Column<int>(type: "int", nullable: false),
                     cddocumento = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     dsnombres = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     dsapellidos = table.Column<string>(type: "nvarchar(max)", nullable: false),
