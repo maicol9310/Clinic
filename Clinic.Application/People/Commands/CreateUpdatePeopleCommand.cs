@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Clinic.Application.Enum;
 using Clinic.Application.Interfaces;
-using Clinic.Application.Models;
 using Clinic.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

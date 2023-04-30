@@ -14,7 +14,13 @@ namespace Clinic.Application.Models
         [Key]
         public int nmid { get; set; }
         public int nmid_persona { get; set; }
+        public string cddocumento { get; set; }
+        public string dsnombres { get; set; }
+        public string dsapellidos { get; set; }
+        public string cdgenero { get; set; }
         public int nmid_medicotra { get; set; }
+        public string dsnombresDoctor { get; set; }
+        public string dsapellidosDoctor { get; set; }
         public string dseps { get; set; }
         public string dsarl { get; set; }
         public DateTime feregistro { get; set; }
