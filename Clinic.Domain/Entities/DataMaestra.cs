@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Clinic.Domain.Entities
 {
     public class DataMaestra
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string nmdato { get; set; }
         public string nmmaestro { get; set; }
         public string cddato { get; set; }

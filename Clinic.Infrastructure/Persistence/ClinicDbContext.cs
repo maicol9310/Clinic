@@ -20,6 +20,10 @@ namespace Clinic.Infrastructure.Persistence
 
         public DbSet<Pacientes> Patients { get; set; }
 
+        public DbSet<Maestras> Masters { get; set; }
+
+        public DbSet<DataMaestra> MasterData { get; set; }
+
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             foreach (var entry in ChangeTracker.Entries())
