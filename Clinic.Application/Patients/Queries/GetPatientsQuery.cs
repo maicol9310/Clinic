@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using Clinic.Application.Enum;
+﻿using Clinic.Application.Enum;
 using Clinic.Application.Interfaces;
 using Clinic.Application.Models;
 using FluentValidation;
@@ -9,20 +7,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Clinic.Application.Patients.Queries
 {
-    public class GetPatientsQuery: IRequest<List<PatientsDTO>>
+    public class GetPatientsQuery : IRequest<List<PatientsDTO>>
     {
     }
 
     public class GetPatientsQueryHandler : IRequestHandler<GetPatientsQuery, List<PatientsDTO>>
     {
         private readonly IClinicDbContext _context;
-        private readonly IMapper _mapper;
 
-        public GetPatientsQueryHandler(IClinicDbContext context,
-            IMapper mapper)
+        public GetPatientsQueryHandler(IClinicDbContext context)
         {
             _context = context;
-            _mapper = mapper;
         }
 
         public async Task<List<PatientsDTO>> Handle(GetPatientsQuery request, CancellationToken cancellationToken)

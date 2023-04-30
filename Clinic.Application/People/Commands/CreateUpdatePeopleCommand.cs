@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Clinic.Application.Enum;
+﻿using Clinic.Application.Enum;
 using Clinic.Application.Interfaces;
 using Clinic.Domain.Entities;
 using MediatR;
@@ -35,9 +34,7 @@ namespace Clinic.Application.People.Commands
     {
         private readonly IClinicDbContext _context;
 
-        public CreateUpdatePeopleCommandHandler(
-            IClinicDbContext context,
-            IMapper mapper)
+        public CreateUpdatePeopleCommandHandler(IClinicDbContext context)
         {
             _context = context;
         }
