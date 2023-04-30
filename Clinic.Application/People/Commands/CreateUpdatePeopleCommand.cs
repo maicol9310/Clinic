@@ -5,6 +5,7 @@ using Clinic.Application.Models;
 using Clinic.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace Clinic.Application.People.Commands
 {
@@ -44,61 +45,138 @@ namespace Clinic.Application.People.Commands
 
         public async Task<bool> Handle(CreateUpdatePeopleCommand request, CancellationToken cancellationToken)
         {
-            var People = await (from e in _context.Peoples
-                                join a in _context.Patients on e.nmid equals a.nmid_persona
-                                where e.nmid == request.NMid
-                                select new PeopleDTO()
-                                {
-                                                                   
-                                }).FirstOrDefaultAsync(cancellationToken);
+            bool accion = false;
 
-            var Peopl = await _context.Peoples
-                //.Include(x => x.)
-                .FirstOrDefaultAsync(x => x.nmid == request.NMid, cancellationToken);
-
-            Personas entity = new Personas
+            try
             {
-                nmid = request.NMid,
-                cddocumento = request.CDdocumento,
-                dsnombres = request.DSnombres,
-                dsapellidos = request.DSapellidos,
-                fenacimiento = request.FEnacimiento,
-                cdtipo = request.CDtipo,
-                cdgenero = request.CDgenero,
-                feregistro = request.FEregistro,
-                febaja = request.FEbaja,
-                cdusuario = request.CDusuario,
-                dsdireccion = request.DSdireccion,
-                dsphoto = request.DSphoto,
-                cdtelefono_fijo = request.CDtelefono_fijo,
-                cdtelefono_movil = request.CDtelefono_movil,
-                dsemail = request.DSemail,
-            };
+                var People = await (from e in _context.Peoples
+                                    where e.nmid == request.NMid
+                                    select new Personas()
+                                    {
+                                        nmid = e.nmid,
+                                        cddocumento = e.cddocumento,
+                                        dsnombres = e.dsnombres,
+                                        dsapellidos = e.dsapellidos,
+                                        fenacimiento = e.fenacimiento,
+                                        cdtipo = e.cdtipo,
+                                        cdgenero = e.cdgenero,
+                                        feregistro = e.feregistro,
+                                        febaja = e.febaja,
+                                        cdusuario = e.cdusuario,
+                                        dsdireccion = e.dsdireccion,
+                                        dsphoto = e.dsphoto,
+                                        cdtelefono_fijo = e.cdtelefono_fijo,
+                                        cdtelefono_movil = e.cdtelefono_movil,
+                                        dsemail = e.dsemail,
+                                   
+                                    }).FirstOrDefaultAsync(cancellationToken);
 
-            _context.Peoples.Add(entity);
+                var Patient = await (from a in _context.Patients 
+                                    where a.nmid_persona == request.NMid
+                                    select new Pacientes()
+                                    {
+                                        nmid = a.nmid,
+                                        nmid_persona = a.nmid_persona,
+                                        nmid_medicotra = a.nmid_medicotra,
+                                        dseps = a.dseps,
+                                        dsarl = a.dsarl,
+                                        feregistro = a.feregistro,
+                                        febaja = a.febaja,
+                                        cdusuario = a.cdusuario,
+                                        dscondicion = a.dscondicion
 
-            await _context.SaveChangesAsync(cancellationToken);
+                                    }).FirstOrDefaultAsync(cancellationToken);
 
-            if (request.CDtipo == TipoPersona.Paciente)
-            {
-                Pacientes entityPacientes = new Pacientes
+                if (People == null)
                 {
-                    nmid_persona = request.NMid,
-                    nmid_medicotra = request.DMid_medicotra,
-                    dseps = request.DSeps,
-                    dsarl = request.DSarl,
-                    feregistro = request.FEregistro,
-                    febaja = request.FEbaja,
-                    cdusuario = request.CDusuario,
-                    dscondicion = request.DScondicion
-                };
+                    Personas entity = new Personas
+                    {
+                        nmid = request.NMid,
+                        cddocumento = request.CDdocumento,
+                        dsnombres = request.DSnombres,
+                        dsapellidos = request.DSapellidos,
+                        fenacimiento = request.FEnacimiento,
+                        cdtipo = request.CDtipo,
+                        cdgenero = request.CDgenero,
+                        feregistro = request.FEregistro,
+                        febaja = request.FEbaja,
+                        cdusuario = request.CDusuario,
+                        dsdireccion = request.DSdireccion,
+                        dsphoto = request.DSphoto,
+                        cdtelefono_fijo = request.CDtelefono_fijo,
+                        cdtelefono_movil = request.CDtelefono_movil,
+                        dsemail = request.DSemail,
+                    };
 
-                _context.Patients.Add(entityPacientes);
+                    _context.Peoples.Add(entity);
 
-                await _context.SaveChangesAsync(cancellationToken);
+                    await _context.SaveChangesAsync(cancellationToken);
+
+                    if (request.CDtipo == TipoPersona.Paciente && Patient == null)
+                    {
+                        Pacientes entityPacientes = new Pacientes
+                        {
+                            nmid_persona = request.NMid,
+                            nmid_medicotra = request.DMid_medicotra,
+                            dseps = request.DSeps,
+                            dsarl = request.DSarl,
+                            feregistro = request.FEregistro,
+                            febaja = request.FEbaja,
+                            cdusuario = request.CDusuario,
+                            dscondicion = request.DScondicion
+                        };
+
+                        _context.Patients.Add(entityPacientes);
+
+                        await _context.SaveChangesAsync(cancellationToken);
+                    }
+
+                    accion = true;
+
+                }
+                else
+                {
+                    People.cddocumento = request.CDdocumento;
+                    People.dsnombres = request.DSnombres;
+                    People.dsapellidos = request.DSapellidos;
+                    People.fenacimiento = request.FEnacimiento;
+                    People.cdgenero = request.CDgenero;
+                    People.febaja = request.FEbaja;
+                    People.cdusuario = request.CDusuario;
+                    People.dsdireccion = request.DSdireccion;
+                    People.dsphoto = request.DSphoto;
+                    People.cdtelefono_fijo = request.CDtelefono_fijo;
+                    People.cdtelefono_movil = request.CDtelefono_movil;
+                    People.dsemail = request.DSemail;
+
+                    if (People.cdtipo == TipoPersona.Paciente)
+                    {
+                        Patient.nmid_medicotra = request.DMid_medicotra;
+                        Patient.dseps = request.DSeps;
+                        Patient.dsarl = request.DSarl;
+                        Patient.feregistro = request.FEregistro;
+                        Patient.febaja = request.FEbaja;
+                        Patient.cdusuario = request.CDusuario;
+                        Patient.dscondicion = request.DScondicion;
+
+                        _context.Patients.Update(Patient);
+
+                        await _context.SaveChangesAsync(cancellationToken);
+                    }
+
+                    _context.Peoples.Update(People);
+
+                    await _context.SaveChangesAsync(cancellationToken);
+
+                    accion = true;
+                }
+
+                return accion;
             }
-
-            return true;
+            catch (Exception ex)
+            {
+                throw new ValidationException("No se pudo insertar o actualizar el registro, Error:" + ex.Message);
+            }
         }
     }
 }

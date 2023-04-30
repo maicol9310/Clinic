@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Clinic.Application.Mappings;
+using Clinic.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Clinic.Application.Models
 {
-    public class PatientsDTO
+    public class PatientsDTO : IMapFrom<Pacientes>
     {
         [Key]
         public int nmid { get; set; }
