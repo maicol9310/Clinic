@@ -11,11 +11,11 @@ import { Patients } from '../Interfaces/patients';
 export class PatientsService {
 
   private endpoint:string = environment.endPoint;
-  private apiUrl:string = this.endpoint + "patients/getPatients"
+  private apiUrl:string = this.endpoint + "patients/"
 
   constructor(private http:HttpClient) { }
 
   getList():Observable<Patients[]>{
-    return this.http.get<Patients[]>(`${this.apiUrl}`);
+    return this.http.get<Patients[]>(`${this.apiUrl}getPatients`);
   }
 }

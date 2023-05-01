@@ -29,10 +29,12 @@ import {MatIconModule} from '@angular/material/icon';
 
 // Cuadriculas
 import {MatGridListModule} from '@angular/material/grid-list';
+import { DialogoAddEditComponent } from './Models/dialogo-add-edit/dialogo-add-edit.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DialogoAddEditComponent
   ],
   imports: [
     BrowserModule,

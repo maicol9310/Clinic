@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Clinic.API.Controllers
 {
+    [Route("masters/")]
     public class MastersController : ApiController
     {
         [HttpGet("getSex")]
