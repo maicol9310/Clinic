@@ -1,0 +1,17 @@
+export interface Patients {
+    nmid:number,
+    nmid_persona:number,
+    cddocumento:string,
+    dsnombres:string,
+    dsapellidos:string,
+    cdgenero:string,
+    nmid_medicotra:number,
+    dsnombresDoctor:string,
+    dsapellidosDoctor:string,
+    dseps:string,
+    dsarl:string,
+    feregistro:string,
+    febaja:string,
+    cdusuario:string,
+    dscondicion:string,
+}

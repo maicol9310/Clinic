@@ -39,8 +39,8 @@ namespace Clinic.Application.Patients.Queries
                                       nmid_medicotra = e.nmid_medicotra,
                                       dseps = e.dseps,
                                       dsarl = e.dsarl,
-                                      feregistro = e.feregistro,
-                                      febaja = e.febaja,
+                                      feregistro = e.feregistro.ToString("yyyy/MM/dd"),
+                                      febaja = e.febaja.ToString("yyyy/MM/dd"),
                                       cdusuario = e.cdusuario,
                                       dscondicion = e.dscondicion,
 

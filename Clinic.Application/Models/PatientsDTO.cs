@@ -23,8 +23,8 @@ namespace Clinic.Application.Models
         public string dsapellidosDoctor { get; set; }
         public string dseps { get; set; }
         public string dsarl { get; set; }
-        public DateTime feregistro { get; set; }
-        public DateTime febaja { get; set; }
+        public string feregistro { get; set; }
+        public string febaja { get; set; }
         public string cdusuario { get; set; }
         public string dscondicion { get; set; }
     }
