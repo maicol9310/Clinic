@@ -8,6 +8,8 @@ import {PatientsService} from './Services/patients.service';
 import {MatDialog} from '@angular/material/dialog';
 import { DialogoAddEditComponent } from './Models/dialogo-add-edit/dialogo-add-edit.component';
 
+import {MatSnackBar} from "@angular/material/snack-bar";
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -31,6 +33,7 @@ export class AppComponent implements AfterViewInit, OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
@@ -49,6 +52,13 @@ export class AppComponent implements AfterViewInit, OnInit {
   }
 
   openDialog() {
-    this.dialog.open(DialogoAddEditComponent);
+    this.dialog.open(DialogoAddEditComponent,{
+      disableClose:true,
+      width:"350px"
+    }).afterClosed().subscribe(resuelto =>{
+      if(resuelto === "Creado"){
+        this.showPatients();
+      }
+    })
   }
 }

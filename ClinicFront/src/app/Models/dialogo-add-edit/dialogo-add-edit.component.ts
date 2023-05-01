@@ -10,6 +10,7 @@ import * as moment from 'moment';
 
 import { Sex } from 'src/app/Interfaces/Sex';
 import { Doctor } from 'src/app/Interfaces/Doctor';
+import { People } from 'src/app/Interfaces/People';
 import { TipoPeople } from 'src/app/Interfaces/TipoPeople';
 import { PeopleService } from 'src/app/Services/people.service';
 
@@ -63,10 +64,10 @@ export class DialogoAddEditComponent implements OnInit {
       CDtelefono_fijo:['',Validators.required],
       CDtelefono_movil:['',Validators.required],
       DSemail:['',Validators.required],
-      DMid_medicotra:['',Validators.required],
-      DSeps:['',Validators.required],
-      DSarl:['',Validators.required],
-      DScondicion:['',Validators.required],
+      DMid_medicotra:[''],
+      DSeps:[''],
+      DSarl:[''],
+      DScondicion:[''],
     })
 
     this._peopleService.getDoctor().subscribe({
@@ -98,8 +99,37 @@ export class DialogoAddEditComponent implements OnInit {
   }
 
   addEditPeople(){
-    console.log(this.formPeople)
     console.log(this.formPeople.value)
+    const modelo: People = {
+      NMid:0,
+      CDdocumento:this.formPeople.value.CDdocumento,
+      DSnombres:this.formPeople.value.DSnombres,
+      DSapellidos:this.formPeople.value.DSapellidos,
+      FEnacimiento:moment(this.formPeople.value.FEnacimiento).format("YYYY/MM/DD"),
+      CDtipo:this.formPeople.value.CDtipo,
+      CDgenero:this.formPeople.value.CDgenero,
+      FEregistro:moment(this.formPeople.value.FEregistro).format("YYYY/MM/DD"),
+      FEbaja:moment(this.formPeople.value.FEbaja).format("YYYY/MM/DD"),
+      CDusuario:this.formPeople.value.CDusuario,
+      DSdireccion:this.formPeople.value.DSdireccion,
+      DSphoto:this.formPeople.value.DSphoto,
+      CDtelefono_fijo:this.formPeople.value.CDtelefono_fijo,
+      CDtelefono_movil:this.formPeople.value.CDtelefono_movil,
+      DSemail:this.formPeople.value.DSemail,
+      DMid_medicotra:this.formPeople.value.DMid_medicotra,
+      DSeps:this.formPeople.value.DSeps,
+      DSarl:this.formPeople.value.DSarl,
+      DScondicion:this.formPeople.value.DScondicion
+    }
+
+    this._peopleService.add(modelo).subscribe({
+      next:(data)=>{
+        this.openSnackBar("Persona fue creada","Listo");
+        this.dialogoReferencia.close("Creado");
+      },error:(e)=>{
+        this.openSnackBar("No se pudo crear","Error")
+      },
+    })
   }
 
   ngOnInit(): void {

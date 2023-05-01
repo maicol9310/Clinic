@@ -6,7 +6,7 @@
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
                     <mat-label>Id Persona</mat-label>
-                    <input matInput formcControlName="NMid" autocomplete="off">
+                    <input matInput formcControlName="NMid" autocomplete="off" type="number">
                   </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
@@ -28,9 +28,11 @@
                   </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
-                <mat-form-field appearance="outline">
+                  <mat-form-field appearance="outline">
                     <mat-label>Fecha de Nacimiento</mat-label>
-                    <input matInput formcControlName="FEnacimiento" autocomplete="off">
+                    <input matInput [matDatepicker]="picker" formcControlName="FEnacimiento">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
@@ -56,13 +58,17 @@
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
                     <mat-label>Fecha Registro</mat-label>
-                    <input matInput formcControlName="FEregistro" autocomplete="off">
+                    <input matInput [matDatepicker]="picker" formcControlName="FEregistro">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
                     <mat-label>Fecha de baja</mat-label>
-                    <input matInput formcControlName="FEbaja" autocomplete="off">
+                    <input matInput [matDatepicker]="picker" formcControlName="FEbaja">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
@@ -135,5 +141,10 @@
     </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
+  <button mat-raised-button mat-dialog-close color="warn">Volver</button>
+  <button mat-raised-button color="primary" 
+  (click)="addEditPeople"
+  [disabled]="formPeople.invalid">
+    {{botonAccion}}
+  </button>
 </div>
