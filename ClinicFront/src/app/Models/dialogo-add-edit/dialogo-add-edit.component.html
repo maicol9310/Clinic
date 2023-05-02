@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>{{tituloAccion}} Persona</h1>
-<div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
+<div mat-dialog-content>Los datos que no tienen * no son necesarios para crear un Doctor</div>
 <div mat-dialog-content>
     <form [formGroup]="formPeople">
         <mat-grid-list cols="1" rowHeight="80px">
@@ -134,7 +134,7 @@
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
                     <mat-label>Condicion</mat-label>
-                    <input matInput formControlName="dScondicion:" autocomplete="off">
+                    <input matInput formControlName="dScondicion" autocomplete="off">
                   </mat-form-field>
             </mat-grid-tile>
           </mat-grid-list>

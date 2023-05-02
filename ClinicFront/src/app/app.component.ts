@@ -7,6 +7,7 @@ import {PatientsService} from './Services/patients.service';
 
 import {MatDialog} from '@angular/material/dialog';
 import { DialogoAddEditComponent } from './Models/dialogo-add-edit/dialogo-add-edit.component';
+import { People } from './Interfaces/People';
 
 @Component({
   selector: 'app-root',
@@ -55,6 +56,18 @@ export class AppComponent implements AfterViewInit, OnInit {
       width:"350px"
     }).afterClosed().subscribe(resuelto =>{
       if(resuelto === "Creado"){
+        this.showPatients();
+      }
+    })
+  }
+
+  openEditDialog(dataPeople:People) {
+    this.dialog.open(DialogoAddEditComponent,{
+      disableClose:true,
+      width:"350px",
+      data:dataPeople
+    }).afterClosed().subscribe(resuelto =>{
+      if(resuelto === "Editado"){
         this.showPatients();
       }
     })

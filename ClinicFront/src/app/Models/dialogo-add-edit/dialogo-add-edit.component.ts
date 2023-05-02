@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {MatDialogRef} from "@angular/material/dialog";
+import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material/dialog";
 
 import {MatSnackBar} from "@angular/material/snack-bar";
 
@@ -13,6 +13,7 @@ import { Doctor } from 'src/app/Interfaces/Doctor';
 import { People } from 'src/app/Interfaces/People';
 import { TipoPeople } from 'src/app/Interfaces/TipoPeople';
 import { PeopleService } from 'src/app/Services/people.service';
+import { Patients } from 'src/app/Interfaces/patients';
 
 export const MY_DATE_FORMATS = {
   parse:{
@@ -46,6 +47,7 @@ export class DialogoAddEditComponent implements OnInit {
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
     private _peopleService: PeopleService,
+    @Inject (MAT_DIALOG_DATA) public dataPeople:People
   ){
 
     this.formPeople = this.fb.group({
@@ -132,6 +134,28 @@ export class DialogoAddEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    if(this.dataPeople){
+      this.formPeople.patchValue({
+        nMid:this.dataPeople.nMid,
+        cDdocumento:this.dataPeople.cDdocumento,
+        dSnombres:this.dataPeople.dSnombres,
+        dSapellidos:this.dataPeople.dSapellidos,
+        fEnacimiento:moment(this.dataPeople.fEnacimiento, "YYYY-MM-DD"),
+        cDtipo:this.dataPeople.cDtipo,
+        cDgenero:this.dataPeople.cDgenero,
+        fEregistro:moment(this.dataPeople.fEregistro, "YYYY-MM-DD"),
+        fEbaja:moment(this.dataPeople.fEbaja, "YYYY-MM-DD"),
+        cDusuario:this.dataPeople.cDusuario,
+        dSdireccion:this.dataPeople.dSdireccion,
+        dSphoto:this.dataPeople.dSphoto,
+        cDtelefono_fijo:this.dataPeople.cDtelefono_fijo,
+        cDtelefono_movil:this.dataPeople.cDtelefono_movil,
+        dSemail:this.dataPeople.dSemail,
+        dMid_medicotra:this.dataPeople.dMid_medicotra,
+        dSeps:this.dataPeople.dSeps,
+        dSarl:this.dataPeople.dSarl,
+        dScondicion:this.dataPeople.dScondicion
+      })
+    }
   }
 }
