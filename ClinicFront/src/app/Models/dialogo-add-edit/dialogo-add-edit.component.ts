@@ -49,25 +49,25 @@ export class DialogoAddEditComponent implements OnInit {
   ){
 
     this.formPeople = this.fb.group({
-      NMid:['',Validators.required],
-      CDdocumento:['',Validators.required],
-      DSnombres:['',Validators.required],
-      DSapellidos:['',Validators.required],
-      FEnacimiento:['',Validators.required],
-      CDtipo:['',Validators.required],
-      CDgenero:['',Validators.required],
-      FEregistro:['',Validators.required],
-      FEbaja:['',Validators.required],
-      CDusuario:['',Validators.required],
-      DSdireccion:['',Validators.required],
-      DSphoto:['',Validators.required],
-      CDtelefono_fijo:['',Validators.required],
-      CDtelefono_movil:['',Validators.required],
-      DSemail:['',Validators.required],
-      DMid_medicotra:[''],
-      DSeps:[''],
-      DSarl:[''],
-      DScondicion:[''],
+      nMid:['',Validators.required],
+      cDdocumento:['',Validators.required],
+      dSnombres:['',Validators.required],
+      dSapellidos:['',Validators.required],
+      fEnacimiento:['',Validators.required],
+      cDtipo:['',Validators.required],
+      cDgenero:['',Validators.required],
+      fEregistro:['',Validators.required],
+      fEbaja:['',Validators.required],
+      cDusuario:['',Validators.required],
+      dSdireccion:['',Validators.required],
+      dSphoto:['',Validators.required],
+      cDtelefono_fijo:['',Validators.required],
+      cDtelefono_movil:['',Validators.required],
+      dSemail:['',Validators.required],
+      dMid_medicotra:[''],
+      dSeps:[''],
+      dSarl:[''],
+      dScondicion:[''],
     })
 
     this._peopleService.getDoctor().subscribe({
@@ -99,27 +99,26 @@ export class DialogoAddEditComponent implements OnInit {
   }
 
   addEditPeople(){
-    console.log(this.formPeople.value)
     const modelo: People = {
-      NMid:0,
-      CDdocumento:this.formPeople.value.CDdocumento,
-      DSnombres:this.formPeople.value.DSnombres,
-      DSapellidos:this.formPeople.value.DSapellidos,
-      FEnacimiento:moment(this.formPeople.value.FEnacimiento).format("YYYY/MM/DD"),
-      CDtipo:this.formPeople.value.CDtipo,
-      CDgenero:this.formPeople.value.CDgenero,
-      FEregistro:moment(this.formPeople.value.FEregistro).format("YYYY/MM/DD"),
-      FEbaja:moment(this.formPeople.value.FEbaja).format("YYYY/MM/DD"),
-      CDusuario:this.formPeople.value.CDusuario,
-      DSdireccion:this.formPeople.value.DSdireccion,
-      DSphoto:this.formPeople.value.DSphoto,
-      CDtelefono_fijo:this.formPeople.value.CDtelefono_fijo,
-      CDtelefono_movil:this.formPeople.value.CDtelefono_movil,
-      DSemail:this.formPeople.value.DSemail,
-      DMid_medicotra:this.formPeople.value.DMid_medicotra,
-      DSeps:this.formPeople.value.DSeps,
-      DSarl:this.formPeople.value.DSarl,
-      DScondicion:this.formPeople.value.DScondicion
+      nMid:this.formPeople.value.nMid,
+      cDdocumento:this.formPeople.value.cDdocumento,
+      dSnombres:this.formPeople.value.dSnombres,
+      dSapellidos:this.formPeople.value.dSapellidos,
+      fEnacimiento:moment(this.formPeople.value.fEnacimiento).format("YYYY-MM-DD"),
+      cDtipo:this.formPeople.value.cDtipo,
+      cDgenero:this.formPeople.value.cDgenero,
+      fEregistro:moment(this.formPeople.value.fEregistro).format("YYYY-MM-DD"),
+      fEbaja:moment(this.formPeople.value.fEbaja).format("YYYY-MM-DD"),
+      cDusuario:this.formPeople.value.cDusuario,
+      dSdireccion:this.formPeople.value.dSdireccion,
+      dSphoto:this.formPeople.value.dSphoto,
+      cDtelefono_fijo:this.formPeople.value.cDtelefono_fijo,
+      cDtelefono_movil:this.formPeople.value.cDtelefono_movil,
+      dSemail:this.formPeople.value.dSemail,
+      dMid_medicotra:this.formPeople.value.dMid_medicotra,
+      dSeps:this.formPeople.value.dSeps,
+      dSarl:this.formPeople.value.dSarl,
+      dScondicion:this.formPeople.value.dScondicion
     }
 
     this._peopleService.add(modelo).subscribe({

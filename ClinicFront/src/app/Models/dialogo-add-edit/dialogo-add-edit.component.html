@@ -6,40 +6,40 @@
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
                     <mat-label>Id Persona</mat-label>
-                    <input matInput formcControlName="NMid" autocomplete="off" type="number">
+                    <input matInput formControlName="nMid" autocomplete="off" type="number">
                   </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
                     <mat-label>Documento</mat-label>
-                    <input matInput formcControlName="CDdocumento" autocomplete="off"> 
+                    <input matInput formControlName="cDdocumento" autocomplete="off"> 
                   </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
                     <mat-label>Nombres</mat-label>
-                    <input matInput formcControlName="DSnombres" autocomplete="off">
+                    <input matInput formControlName="dSnombres" autocomplete="off">
                   </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
                     <mat-label>Apellidos</mat-label>
-                    <input matInput formcControlName="DSapellidos" autocomplete="off">
+                    <input matInput formControlName="dSapellidos" autocomplete="off">
                   </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
                   <mat-form-field appearance="outline">
                     <mat-label>Fecha de Nacimiento</mat-label>
-                    <input matInput [matDatepicker]="picker" formcControlName="FEnacimiento">
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
+                    <input matInput [matDatepicker]="picker1" formControlName="fEnacimiento">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
                   </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
                     <mat-label>Tipo</mat-label>
-                    <mat-select formcControlName="CDtipo">
-                      <mat-option *ngFor="let item of listaTipoPersona" [value]="item.nmdato">
+                    <mat-select formControlName="cDtipo">
+                      <mat-option *ngFor="let item of listaTipoPersona" [value]="item.cddato">
                         {{item.cddato}}
                       </mat-option>
                     </mat-select>
@@ -48,8 +48,8 @@
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
                       <mat-label>Genero</mat-label>
-                      <mat-select formcControlName="CDgenero">
-                        <mat-option *ngFor="let item of listaSex" [value]="item.nmdato">
+                      <mat-select formControlName="cDgenero">
+                        <mat-option *ngFor="let item of listaSex" [value]="item.cddato">
                           {{item.cddato}}
                         </mat-option>
                       </mat-select>
@@ -58,53 +58,53 @@
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
                     <mat-label>Fecha Registro</mat-label>
-                    <input matInput [matDatepicker]="picker" formcControlName="FEregistro">
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
+                    <input matInput [matDatepicker]="picker2" formControlName="fEregistro">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
                   </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
                     <mat-label>Fecha de baja</mat-label>
-                    <input matInput [matDatepicker]="picker" formcControlName="FEbaja">
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
+                    <input matInput [matDatepicker]="picker3" formControlName="fEbaja">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
+                    <mat-datepicker #picker3></mat-datepicker>
                   </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
                     <mat-label>Code Usuario</mat-label>
-                    <input matInput formcControlName="CDusuario" autocomplete="off">
+                    <input matInput formControlName="cDusuario" autocomplete="off">
                   </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
                     <mat-label>Direccion</mat-label>
-                    <input matInput formcControlName="DSdireccion" autocomplete="off">
+                    <input matInput formControlName="dSdireccion" autocomplete="off">
                   </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
                     <mat-label>Foto</mat-label>
-                    <input matInput formcControlName="DSphoto" autocomplete="off">
+                    <input matInput formControlName="dSphoto" autocomplete="off">
                   </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
                     <mat-label>Telefono Fijo</mat-label>
-                    <input matInput formcControlName="CDtelefono_fijo" autocomplete="off">
+                    <input matInput formControlName="cDtelefono_fijo" autocomplete="off">
                   </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
                     <mat-label>Telefono Movil</mat-label>
-                    <input matInput formcControlName="CDtelefono_movil" autocomplete="off">
+                    <input matInput formControlName="cDtelefono_movil" autocomplete="off">
                   </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
                     <mat-label>Email</mat-label>
-                    <input matInput formcControlName="DSemail" autocomplete="off">
+                    <input matInput formControlName="dSemail" autocomplete="off">
                   </mat-form-field>
             </mat-grid-tile>
             <br>
@@ -112,7 +112,7 @@
             <mat-grid-tile>
                   <mat-form-field appearance="outline">
                     <mat-label>Id Medico</mat-label>
-                    <mat-select formcControlName="DMid_medicotra">
+                    <mat-select formControlName="dMid_medicotra">
                       <mat-option *ngFor="let item of listaDoctors" [value]="item.nmid">
                         {{item.dsnombres}}
                       </mat-option>
@@ -122,19 +122,19 @@
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
                     <mat-label>EPS</mat-label>
-                    <input matInput formcControlName="DSeps" autocomplete="off">
+                    <input matInput formControlName="dSeps" autocomplete="off">
                   </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
                     <mat-label>ARL</mat-label>
-                    <input matInput formcControlName="DSarl" autocomplete="off">
+                    <input matInput formControlName="dSarl" autocomplete="off">
                   </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
                     <mat-label>Condicion</mat-label>
-                    <input matInput formcControlName="DScondicion:" autocomplete="off">
+                    <input matInput formControlName="dScondicion:" autocomplete="off">
                   </mat-form-field>
             </mat-grid-tile>
           </mat-grid-list>
@@ -143,8 +143,7 @@
 <div mat-dialog-actions>
   <button mat-raised-button mat-dialog-close color="warn">Volver</button>
   <button mat-raised-button color="primary" 
-  (click)="addEditPeople"
-  [disabled]="formPeople.invalid">
+  (click)="addEditPeople()">
     {{botonAccion}}
   </button>
 </div>

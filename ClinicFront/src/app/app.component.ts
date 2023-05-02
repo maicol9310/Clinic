@@ -8,8 +8,6 @@ import {PatientsService} from './Services/patients.service';
 import {MatDialog} from '@angular/material/dialog';
 import { DialogoAddEditComponent } from './Models/dialogo-add-edit/dialogo-add-edit.component';
 
-import {MatSnackBar} from "@angular/material/snack-bar";
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

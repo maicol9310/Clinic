@@ -9,25 +9,25 @@ namespace Clinic.Application.People.Commands
 {
     public class CreateUpdatePeopleCommand : IRequest<bool>
     {
-        public int NMid { get; set; }
-        public string CDdocumento { get; set; }
-        public string DSnombres { get; set; }
-        public string DSapellidos { get; set; }
-        public DateTime FEnacimiento { get; set; }
-        public string CDtipo { get; set; }
-        public string CDgenero { get; set; }
-        public DateTime FEregistro { get; set; }
-        public DateTime FEbaja { get; set; }
-        public string CDusuario { get; set; }
-        public string DSdireccion { get; set; }
-        public string DSphoto { get; set; }
-        public string CDtelefono_fijo { get; set; }
-        public string CDtelefono_movil { get; set; }
-        public string DSemail { get; set; }
-        public int DMid_medicotra { get; set; }
-        public string DSeps { get; set; }
-        public string DSarl { get; set; }
-        public string DScondicion { get; set; }
+        public int nmid { get; set; }
+        public string cddocumento { get; set; }
+        public string dsnombres { get; set; }
+        public string dsapellidos { get; set; }
+        public DateTime fenacimiento { get; set; }
+        public string cdtipo { get; set; }
+        public string cdgenero { get; set; }
+        public DateTime feregistro { get; set; }
+        public DateTime febaja { get; set; }
+        public string cdusuario { get; set; }
+        public string dsdireccion { get; set; }
+        public string dsphoto { get; set; }
+        public string cdtelefono_fijo { get; set; }
+        public string cdtelefono_movil { get; set; }
+        public string dsemail { get; set; }
+        public int dmid_medicotra { get; set; }
+        public string dseps { get; set; }
+        public string dsarl { get; set; }
+        public string dscondicion { get; set; }
     }
 
     public class CreateUpdatePeopleCommandHandler : IRequestHandler<CreateUpdatePeopleCommand, bool>
@@ -46,7 +46,7 @@ namespace Clinic.Application.People.Commands
             try
             {
                 var People = await (from e in _context.Peoples
-                                    where e.nmid == request.NMid
+                                    where e.nmid == request.nmid
                                     select new Personas()
                                     {
                                         nmid = e.nmid,
@@ -68,7 +68,7 @@ namespace Clinic.Application.People.Commands
                                     }).FirstOrDefaultAsync(cancellationToken);
 
                 var Patient = await (from a in _context.Patients 
-                                    where a.nmid_persona == request.NMid
+                                    where a.nmid_persona == request.nmid
                                     select new Pacientes()
                                     {
                                         nmid = a.nmid,
@@ -87,39 +87,39 @@ namespace Clinic.Application.People.Commands
                 {
                     Personas entity = new Personas
                     {
-                        nmid = request.NMid,
-                        cddocumento = request.CDdocumento,
-                        dsnombres = request.DSnombres,
-                        dsapellidos = request.DSapellidos,
-                        fenacimiento = request.FEnacimiento,
-                        cdtipo = request.CDtipo,
-                        cdgenero = request.CDgenero,
-                        feregistro = request.FEregistro,
-                        febaja = request.FEbaja,
-                        cdusuario = request.CDusuario,
-                        dsdireccion = request.DSdireccion,
-                        dsphoto = request.DSphoto,
-                        cdtelefono_fijo = request.CDtelefono_fijo,
-                        cdtelefono_movil = request.CDtelefono_movil,
-                        dsemail = request.DSemail,
+                        nmid = request.nmid,
+                        cddocumento = request.cddocumento,
+                        dsnombres = request.dsnombres,
+                        dsapellidos = request.dsapellidos,
+                        fenacimiento = request.fenacimiento,
+                        cdtipo = request.cdtipo,
+                        cdgenero = request.cdgenero,
+                        feregistro = request.feregistro,
+                        febaja = request.febaja,
+                        cdusuario = request.cdusuario,
+                        dsdireccion = request.dsdireccion,
+                        dsphoto = request.dsphoto,
+                        cdtelefono_fijo = request.cdtelefono_fijo,
+                        cdtelefono_movil = request.cdtelefono_movil,
+                        dsemail = request.dsemail,
                     };
 
                     _context.Peoples.Add(entity);
 
                     await _context.SaveChangesAsync(cancellationToken);
 
-                    if (request.CDtipo == TipoPersona.Paciente && Patient == null)
+                    if (request.cdtipo == TipoPersona.Paciente && Patient == null)
                     {
                         Pacientes entityPacientes = new Pacientes
                         {
-                            nmid_persona = request.NMid,
-                            nmid_medicotra = request.DMid_medicotra,
-                            dseps = request.DSeps,
-                            dsarl = request.DSarl,
-                            feregistro = request.FEregistro,
-                            febaja = request.FEbaja,
-                            cdusuario = request.CDusuario,
-                            dscondicion = request.DScondicion
+                            nmid_persona = request.nmid,
+                            nmid_medicotra = request.dmid_medicotra,
+                            dseps = request.dseps,
+                            dsarl = request.dsarl,
+                            feregistro = request.feregistro,
+                            febaja = request.febaja,
+                            cdusuario = request.cdusuario,
+                            dscondicion = request.dscondicion
                         };
 
                         _context.Patients.Add(entityPacientes);
@@ -132,28 +132,28 @@ namespace Clinic.Application.People.Commands
                 }
                 else
                 {
-                    People.cddocumento = request.CDdocumento;
-                    People.dsnombres = request.DSnombres;
-                    People.dsapellidos = request.DSapellidos;
-                    People.fenacimiento = request.FEnacimiento;
-                    People.cdgenero = request.CDgenero;
-                    People.febaja = request.FEbaja;
-                    People.cdusuario = request.CDusuario;
-                    People.dsdireccion = request.DSdireccion;
-                    People.dsphoto = request.DSphoto;
-                    People.cdtelefono_fijo = request.CDtelefono_fijo;
-                    People.cdtelefono_movil = request.CDtelefono_movil;
-                    People.dsemail = request.DSemail;
+                    People.cddocumento = request.cddocumento;
+                    People.dsnombres = request.dsnombres;
+                    People.dsapellidos = request.dsapellidos;
+                    People.fenacimiento = request.fenacimiento;
+                    People.cdgenero = request.cdgenero;
+                    People.febaja = request.febaja;
+                    People.cdusuario = request.cdusuario;
+                    People.dsdireccion = request.dsdireccion;
+                    People.dsphoto = request.dsphoto;
+                    People.cdtelefono_fijo = request.cdtelefono_fijo;
+                    People.cdtelefono_movil = request.cdtelefono_movil;
+                    People.dsemail = request.dsemail;
 
                     if (People.cdtipo == TipoPersona.Paciente)
                     {
-                        Patient.nmid_medicotra = request.DMid_medicotra;
-                        Patient.dseps = request.DSeps;
-                        Patient.dsarl = request.DSarl;
-                        Patient.feregistro = request.FEregistro;
-                        Patient.febaja = request.FEbaja;
-                        Patient.cdusuario = request.CDusuario;
-                        Patient.dscondicion = request.DScondicion;
+                        Patient.nmid_medicotra = request.dmid_medicotra;
+                        Patient.dseps = request.dseps;
+                        Patient.dsarl = request.dsarl;
+                        Patient.feregistro = request.feregistro;
+                        Patient.febaja = request.febaja;
+                        Patient.cdusuario = request.cdusuario;
+                        Patient.dscondicion = request.dscondicion;
 
                         _context.Patients.Update(Patient);
 
