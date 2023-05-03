@@ -1,5 +1,6 @@
 export interface People{
     nmid:number,
+    nmid_persona:number,
     cddocumento:string,
     dsnombres:string,
     dsapellidos:string,
@@ -14,7 +15,7 @@ export interface People{
     cdtelefono_fijo:string,
     cdtelefono_movil:string,
     dsemail:string,
-    dmid_medicotra:number,
+    nmid_medicotra:number,
     dseps:string,
     dsarl:string,
     dscondicion:string,

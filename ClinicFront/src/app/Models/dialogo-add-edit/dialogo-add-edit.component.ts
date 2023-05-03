@@ -52,6 +52,7 @@ export class DialogoAddEditComponent implements OnInit {
     console.log(this.dataPeople)
     this.formPeople = this.fb.group({
       nmid:['',Validators.required],
+      nmid_persona:['',Validators.required],
       cddocumento:['',Validators.required],
       dsnombres:['',Validators.required],
       dsapellidos:['',Validators.required],
@@ -66,7 +67,7 @@ export class DialogoAddEditComponent implements OnInit {
       cdtelefono_fijo:['',Validators.required],
       cdtelefono_movil:['',Validators.required],
       dsemail:['',Validators.required],
-      dmid_medicotra:[''],
+      nmid_medicotra:[''],
       dseps:[''],
       dsarl:[''],
       dscondicion:[''],
@@ -103,6 +104,7 @@ export class DialogoAddEditComponent implements OnInit {
   addEditPeople(){
     const modelo: People = {
       nmid:this.formPeople.value.nmid,
+      nmid_persona:this.formPeople.value.nmid_persona,
       cddocumento:this.formPeople.value.cddocumento,
       dsnombres:this.formPeople.value.dsnombres,
       dsapellidos:this.formPeople.value.dsapellidos,
@@ -117,7 +119,7 @@ export class DialogoAddEditComponent implements OnInit {
       cdtelefono_fijo:this.formPeople.value.cdtelefono_fijo,
       cdtelefono_movil:this.formPeople.value.cdtelefono_movil,
       dsemail:this.formPeople.value.dsemail,
-      dmid_medicotra:this.formPeople.value.dmid_medicotra,
+      nmid_medicotra:this.formPeople.value.nmid_medicotra,
       dseps:this.formPeople.value.dseps,
       dsarl:this.formPeople.value.dsarl,
       dscondicion:this.formPeople.value.dscondicion
@@ -137,7 +139,7 @@ export class DialogoAddEditComponent implements OnInit {
     if(this.dataPeople){
       console.log(this.formPeople.value)
       this.formPeople.patchValue({
-        nmid:this.dataPeople.nmid,
+        nmid:this.dataPeople.nmid_persona,
         cddocumento:this.dataPeople.cddocumento,
         dsnombres:this.dataPeople.dsnombres,
         dsapellidos:this.dataPeople.dsapellidos,
@@ -152,7 +154,7 @@ export class DialogoAddEditComponent implements OnInit {
         cdtelefono_fijo:this.dataPeople.cdtelefono_fijo,
         cdtelefono_movil:this.dataPeople.cdtelefono_movil,
         dsemail:this.dataPeople.dsemail,
-        dmid_medicotra:this.dataPeople.dmid_medicotra,
+        nmid_medicotra:this.dataPeople.nmid_medicotra,
         dseps:this.dataPeople.dseps,
         dsarl:this.dataPeople.dsarl,
         dscondicion:this.dataPeople.dscondicion

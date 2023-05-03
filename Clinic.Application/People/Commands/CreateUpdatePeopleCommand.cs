@@ -24,7 +24,7 @@ namespace Clinic.Application.People.Commands
         public string cdtelefono_fijo { get; set; }
         public string cdtelefono_movil { get; set; }
         public string dsemail { get; set; }
-        public int dmid_medicotra { get; set; }
+        public int nmid_medicotra { get; set; }
         public string dseps { get; set; }
         public string dsarl { get; set; }
         public string dscondicion { get; set; }
@@ -113,7 +113,7 @@ namespace Clinic.Application.People.Commands
                         Pacientes entityPacientes = new Pacientes
                         {
                             nmid_persona = request.nmid,
-                            nmid_medicotra = request.dmid_medicotra,
+                            nmid_medicotra = request.nmid_medicotra,
                             dseps = request.dseps,
                             dsarl = request.dsarl,
                             feregistro = request.feregistro,
@@ -147,7 +147,7 @@ namespace Clinic.Application.People.Commands
 
                     if (People.cdtipo == TipoPersona.Paciente)
                     {
-                        Patient.nmid_medicotra = request.dmid_medicotra;
+                        Patient.nmid_medicotra = request.nmid_medicotra;
                         Patient.dseps = request.dseps;
                         Patient.dsarl = request.dsarl;
                         Patient.feregistro = request.feregistro;
