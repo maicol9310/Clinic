@@ -4,6 +4,7 @@ export interface Patients {
     cddocumento:string,
     dsnombres:string,
     dsapellidos:string,
+    fenacimiento:string,
     cdgenero:string,
     nmid_medicotra:number,
     dsnombresDoctor:string,

@@ -18,8 +18,9 @@ import { People } from './Interfaces/People';
 export class AppComponent implements AfterViewInit, OnInit {
 
   displayedColumns: string[] = ['nmid_persona','cddocumento','dsnombres',
-  'dsapellidos','cdgenero','dsnombresDoctor','dseps','dsarl','feregistro',
-  'febaja','cdusuario','dscondicion','Acciones'];
+  'dsapellidos','fenacimiento','cdgenero','dsnombresDoctor','dseps','dsarl','feregistro',
+  'febaja','cdusuario','dsdireccion','dsphoto','cdtelefono_fijo','cdtelefono_movil',
+  'dsemail','dscondicion','Acciones'];
 
   dataSource = new MatTableDataSource<Patients>();
   ocultarColumna = true;

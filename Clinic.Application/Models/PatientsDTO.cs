@@ -17,10 +17,17 @@ namespace Clinic.Application.Models
         public string cddocumento { get; set; }
         public string dsnombres { get; set; }
         public string dsapellidos { get; set; }
+        public string fenacimiento { get; set; }
+        public string cdtipo { get; set; }
         public string cdgenero { get; set; }
         public int nmid_medicotra { get; set; }
         public string dsnombresDoctor { get; set; }
         public string dsapellidosDoctor { get; set; }
+        public string dsdireccion { get; set; }
+        public string dsphoto { get; set; }
+        public string cdtelefono_fijo { get; set; }
+        public string cdtelefono_movil { get; set; }
+        public string dsemail { get; set; }
         public string dseps { get; set; }
         public string dsarl { get; set; }
         public string feregistro { get; set; }

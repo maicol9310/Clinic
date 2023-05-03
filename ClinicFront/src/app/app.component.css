@@ -1,13 +1,11 @@
-table {
-    width: 100%;
-  }
-
 .mat-form-field {
     font-size: 12px;
     width: 100%;
   }
+.table-container {
+  overflow-x: auto;
+}
 
-.ocultar-columna {
-  display: none;
-  width: 0;
+table{
+  min-width: 2500px;
 }
