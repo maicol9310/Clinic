@@ -36,6 +36,7 @@ export const MY_DATE_FORMATS = {
 export class DialogoAddEditComponent implements OnInit {
 
   formPeople: FormGroup;
+  textSubtitulo: string = "Los datos que no tienen * no son necesarios para crear un Doctor";
   tituloAccion: string = "Nuevo";
   botonAccion: string = "Guardar";
   listaDoctors: Doctor[] = [];
@@ -170,6 +171,7 @@ export class DialogoAddEditComponent implements OnInit {
         dscondicion:this.dataPeople.dscondicion
       })
 
+      this.textSubtitulo = '';
       this.tituloAccion = 'Editar';
       this.botonAccion = 'Actualizar';
     }
