@@ -49,7 +49,6 @@ export class DialogoAddEditComponent implements OnInit {
     private _peopleService: PeopleService,
     @Inject (MAT_DIALOG_DATA) public dataPeople:People
   ){
-    console.log(this.dataPeople)
     this.formPeople = this.fb.group({
       nmid:['',Validators.required],
       nmid_persona:['',Validators.required],
@@ -125,19 +124,30 @@ export class DialogoAddEditComponent implements OnInit {
       dscondicion:this.formPeople.value.dscondicion
     }
 
-    this._peopleService.add(modelo).subscribe({
-      next:(data)=>{
-        this.openSnackBar("Persona fue creada","Listo");
-        this.dialogoReferencia.close("Creado");
-      },error:(e)=>{
-        this.openSnackBar("No se pudo crear","Error")
-      },
-    })
+    if(this.dataPeople == null){
+      this._peopleService.add(modelo).subscribe({
+        next:(data)=>{
+          this.openSnackBar("Persona fue creada","Listo");
+          this.dialogoReferencia.close("Creado");
+        },error:(e)=>{
+          this.openSnackBar("No se pudo crear","Error")
+        },
+      })
+    }
+    else{
+      this._peopleService.add(modelo).subscribe({
+        next:(data)=>{
+          this.openSnackBar("Persona fue Editado","Listo");
+          this.dialogoReferencia.close("Editado");
+        },error:(e)=>{
+          this.openSnackBar("No se pudo Editar","Error")
+        },
+      })
+    }
   }
 
   ngOnInit(): void {
     if(this.dataPeople){
-      console.log(this.formPeople.value)
       this.formPeople.patchValue({
         nmid:this.dataPeople.nmid_persona,
         cddocumento:this.dataPeople.cddocumento,
@@ -159,6 +169,9 @@ export class DialogoAddEditComponent implements OnInit {
         dsarl:this.dataPeople.dsarl,
         dscondicion:this.dataPeople.dscondicion
       })
+
+      this.tituloAccion = 'Editar';
+      this.botonAccion = 'Actualizar';
     }
   }
 }
